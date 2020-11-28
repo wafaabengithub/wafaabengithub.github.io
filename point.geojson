@@ -1,0 +1,19 @@
+var point={
+"type": "FeatureCollection",
+"name": "point",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "NAME": "Algérie", "tab Feui_7": null, "sedefo": null, "sedemo": null, "prpafo": null, "prpam": null, "etereofo": null, "etereomo": null, "etrhyfo": null, "eterhymo": null }, "geometry": { "type": "Point", "coordinates": [ 2.677146020956982, 28.158373862452358 ] } },
+{ "type": "Feature", "properties": { "NAME": "Egypte", "tab Feui_7": null, "sedefo": null, "sedemo": null, "prpafo": null, "prpam": null, "etereofo": null, "etereomo": null, "etrhyfo": null, "eterhymo": null }, "geometry": { "type": "Point", "coordinates": [ 29.783657172827077, 26.569799376975567 ] } },
+{ "type": "Feature", "properties": { "NAME": "Libye", "tab Feui_7": null, "sedefo": null, "sedemo": null, "prpafo": null, "prpam": null, "etereofo": null, "etereomo": null, "etrhyfo": null, "eterhymo": null }, "geometry": { "type": "Point", "coordinates": [ 18.031172262030918, 27.040321660653035 ] } },
+{ "type": "Feature", "properties": { "NAME": "Tunésie", "tab Feui_7": null, "sedefo": null, "sedemo": null, "prpafo": null, "prpam": null, "etereofo": null, "etereomo": null, "etrhyfo": null, "eterhymo": null }, "geometry": { "type": "Point", "coordinates": [ 9.57888690848551, 34.111070181082802 ] } },
+{ "type": "Feature", "properties": { "NAME": "Assa Zag", "tab Feui_7": "1", "sedefo": "4", "sedemo": "-", "prpafo": "0", "prpam": "4", "etereofo": "72,2", "etereomo": "8,6", "etrhyfo": "1,6", "eterhymo": "2,7" }, "geometry": { "type": "Point", "coordinates": [ -12.723210053279177, 25.194085396592158 ] } },
+{ "type": "Feature", "properties": { "NAME": "Figuig", "tab Feui_7": "2", "sedefo": "18", "sedemo": "70", "prpafo": "1", "prpam": "10", "etereofo": "0,0", "etereomo": "12,8", "etrhyfo": "17 ,6", "eterhymo": "18,8" }, "geometry": { "type": "Point", "coordinates": [ -4.937914286705355, 31.317330470772955 ] } },
+{ "type": "Feature", "properties": { "NAME": "Agadir Ida Ou Tanan", "tab Feui_7": "3", "sedefo": "19", "sedemo": "41", "prpafo": "16", "prpam": "51", "etereofo": "0,0", "etereomo": "0,0", "etrhyfo": "12,0", "eterhymo": "10,6" }, "geometry": { "type": "Point", "coordinates": [ -8.93452605322506, 30.603282384433754 ] } },
+{ "type": "Feature", "properties": { "NAME": "Fquih Ben Salah", "tab Feui_7": "4", "sedefo": "23", "sedemo": "16", "prpafo": "24", "prpam": "58", "etereofo": "0,0", "etereomo": "0,3", "etrhyfo": "31,3", "eterhymo": "20,7" }, "geometry": { "type": "Point", "coordinates": [ -6.450370331433259, 32.063851168183071 ] } },
+{ "type": "Feature", "properties": { "NAME": "Khouribga", "tab Feui_7": "5", "sedefo": "21", "sedemo": "0", "prpafo": "47", "prpam": "53", "etereofo": "2,2", "etereomo": "1,0", "etrhyfo": "1,0", "eterhymo": "5,3" }, "geometry": { "type": "Point", "coordinates": [ -7.878285502958171, 32.522660107885493 ] } },
+{ "type": "Feature", "properties": { "NAME": "Berkane", "tab Feui_7": "6", "sedefo": "8", "sedemo": "32", "prpafo": "8", "prpam": "66", "etereofo": "0,0", "etereomo": "28,7", "etrhyfo": "7,9", "eterhymo": "13,9" }, "geometry": { "type": "Point", "coordinates": [ -3.29285107712826, 34.056868507353101 ] } },
+{ "type": "Feature", "properties": { "NAME": "Fahs Anjra", "tab Feui_7": "8", "sedefo": "16", "sedemo": "5", "prpafo": "81", "prpam": "18", "etereofo": "0,0", "etereomo": "0,0", "etrhyfo": "27,9", "eterhymo": "31,8" }, "geometry": { "type": "Point", "coordinates": [ -4.967899354969883, 35.206274149797494 ] } },
+{ "type": "Feature", "properties": { "NAME": "Benslimane", "tab Feui_7": "7", "sedefo": "4", "sedemo": "1", "prpafo": "0", "prpam": "52", "etereofo": "0,4", "etereomo": "0,8", "etrhyfo": "4,6", "eterhymo": "18,1" }, "geometry": { "type": "Point", "coordinates": [ -6.011411311459044, 34.114203890724959 ] } }
+]
+}
