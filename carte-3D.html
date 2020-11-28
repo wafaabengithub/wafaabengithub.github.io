@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Carte en 3D</title>
+  
+    <!-- Favicons -->
+  <link href="dynamique/examples/html/assets/img/fav.png" rel="icon">
+  <link href="dynamique/examples/html/assets/img/fav.png" rel="fav">
+
+  <link rel="stylesheet" href="leaflet.css" />
+  <script src="leaflet.js"></script>
+<!--  <script src="symbolerec.geojson"></script> -->
+ 
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+
+
+
+  <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-left: 0px;
+    }
+    #map {
+      width: 1263px;
+      height: 600px;
+      background-image: url(http://subtlepatterns.com/patterns/noisy_net.png);
+    }
+    .info {
+        padding: 6px 8px;
+        font: 14px/16px Arial, Helvetica, sans-serif;
+        background: white;
+        background: rgba(255,255,255,0.8);
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        border-radius: 5px;
+    }
+    .info h4 {
+        margin: 0 0 5px;
+        color: #006d2c;
+    }
+  </style>
+     <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap-responsive.css" >
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../dist/css/dvf.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../css/example.css" type="text/css" media="screen" />
+    <!-- ajout -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+ 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="dynamique/examples/html/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="dynamique/examples/html/assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="dynamique/examples/html/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="dynamique/examples/html/assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="dynamique/examples/html/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="dynamique/examples/html/assets/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="dynamique/examples/html/assets/vendor/owl.carousel/dynamique/examples/html/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="dynamique/examples/html/assets/vendor/aos/aos.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="dynamique/examples/html/assets/css/style.css" rel="stylesheet">
+
+  
+</head>
+<body>
+
+   <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container-fluid">
+
+      <div class="row justify-content-center">
+        <div class="col-xl-11 d-flex align-items-center">
+          <h1 class="logo mr-auto"><a href="index.html">AfricaClim</a></h1>
+          
+          <nav class="nav-menu d-none d-lg-block">
+        </nav>
+        </div>
+      </div>
+
+    </div>
+  </header>
+  <!-- End Header -->
+  
+
+<div id='map'></div>
+
+<script type="text/javascript" src="symbolerec.geojson"></script>
+
+<script type="text/javascript">
+
+  var map = L.map('map').setView([33.976483, -6.870933], 4);
+
+
+  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+  }).addTo(map);
+
+
+
+  // get color depending on population density value
+  function getColor(d) {
+     
+       return  d == "1" ? '#549176' :
+         
+         
+              '#FFEDA0';
+  }
+
+  function Monstyle(feature) {
+    return {
+      weight: 3,
+      opacity: 1000,
+      color: 'grey',
+      dashArray: '2',
+      fillOpacity: 1,
+      fillColor: getColor(feature.properties.NAME)
+    };
+  }1000
+  function highlightFeature(e) {
+      var layer = e.target;
+
+      layer.setStyle({
+          weight: 5,
+          color: '#666',
+          dashArray: '',
+          fillOpacity: 0.7
+      });
+
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+          layer.bringToFront();
+      }
+          info.update(layer.feature.properties);
+          draw();
+
+  }
+
+  function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+          info.update();
+
+  }
+  function zoomToFeature(e) {
+    map.fitBounds(e.target.getBounds());
+}
+  function onEachFeature(feature, layer) {
+    layer.on({
+        mouseover: highlightFeature,
+        mouseout: resetHighlight,
+        click: zoomToFeature
+    });
+}
+var info = L.control();
+
+info.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+    this.update();
+    return this._div;
+};
+
+
+
+
+
+// method that we will use to update the control based on feature properties passed
+info.update = function (props) {
+    this._div.innerHTML = '<h4>Sensibilité des terres à la désertification et à la dégradation forte</h4>' +  (props ?
+        'Nom: <b>' + props.NAME  
+         + '</b> <br /> Sensibilité %: <b>' + props.sedefo
+        + '</b> <br /> Régions: <b>' + props.region
+        : ' Merci de mettre le cursuer sur la region');
+};
+
+info.addTo(map);
+
+
+
+
+
+
+  var geojson = L.geoJson(sym, {
+    style: Monstyle,
+      onEachFeature: onEachFeature,
+}).addTo(map);
+
+info.addTo(map);
+
+
+    
+
+</script>
+
+</body>
+</html>
